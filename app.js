@@ -138,8 +138,9 @@ function getGamesWithStats() {
   // Include any custom games submitted by users
   const knownSlugs = new Set(INITIAL_GAMES.map((g) => g.slug));
   const customGames = [];
+  let liveGames = 0;
   for (const r of reports) {
-    if (!knownSlugs.has(r.gameSlug)) {
+    if (!knownSlugs.has(r.gameSlug) && (!r.live || liveGames++ < 12)) {
       knownSlugs.add(r.gameSlug);
       const title = r.gameTitle || r.gameSlug;
       customGames.push({
@@ -317,7 +318,8 @@ function renderHome(params) {
 
   filtered.sort((a, b) => b.reportCount - a.reportCount || STATUS_META[b.status].rank - STATUS_META[a.status].rank);
 
-  const latestReports = reports.slice().sort((a, b) => a.hoursAgo - b.hoursAgo).slice(0, 6);
+  // Proven runs on the home page: hand-checked reports only (live ones are on the Reports page).
+  const latestReports = reports.filter((r) => r.verified).sort((a, b) => a.hoursAgo - b.hoursAgo).slice(0, 6);
   const hasActiveFilters = Boolean(q || platformFilter || statusFilter || upscalerFilter);
 
   return `

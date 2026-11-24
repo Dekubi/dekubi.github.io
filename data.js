@@ -83,7 +83,8 @@ export function makeCoverSvg(title, tag, c1 = '#134e38', c2 = '#091f1a') {
     .map((w) => w[0].toUpperCase())
     .join('') || 'DK';
 
-  const safeTag = String(tag || 'DEKUBI').replace(/&/g, '&amp;');
+  const xml = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const safeTag = xml(tag || 'DEKUBI');
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="440" viewBox="0 0 300 440">
     <defs>
       <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -96,10 +97,10 @@ export function makeCoverSvg(title, tag, c1 = '#134e38', c2 = '#091f1a') {
     <circle cx="240" cy="86" r="88" fill="rgba(255,255,255,0.08)"/>
     <rect x="22" y="24" width="136" height="28" rx="4" fill="rgba(12,12,14,0.65)"/>
     <text x="34" y="43" fill="#34d399" font-family="monospace" font-size="13" font-weight="700">${safeTag}</text>
-    <text x="26" y="280" fill="rgba(255,255,255,0.92)" font-family="sans-serif" font-size="96" font-weight="800" letter-spacing="-4">${initials}</text>
+    <text x="26" y="280" fill="rgba(255,255,255,0.92)" font-family="sans-serif" font-size="96" font-weight="800" letter-spacing="-4">${xml(initials)}</text>
     <rect x="26" y="388" width="64" height="5" rx="2" fill="#10b981"/>
   </svg>`;
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg).replace(/'/g, '%27')}`;
 }
 
 // Tracked catalog: Ocarina of Time has proven log runs below; other titles remain Untested until logged.
