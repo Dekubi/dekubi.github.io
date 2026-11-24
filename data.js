@@ -350,7 +350,7 @@ export const RELEASES_FALLBACK = [
     html_url: 'https://github.com/Dekubi/Dekubi-Ally/releases/tag/V3.0.2',
     highlights: [
       'Ocarina of Time: unmapped GPU memory is zeroed on the GPU instead of being filled and copied by the CPU (less work in busy scenes)',
-      'Logs: Dekubi's own hang reports and self-checks are warnings, so errors in a log are real problems',
+      'Logs: Dekubi’s own hang reports and self-checks are warnings, so errors in a log are real problems',
       'The log-sharing question says an anonymous summary may appear on dekubi.github.io; only a yes to that publishes one',
     ],
   },
