@@ -46,6 +46,7 @@ export const PLATFORMS = [
 ];
 
 export const BUILDS = [
+  'v3.0.3',
   'v3.0.2',
   'v3.0.1',
   'v3.0.0',
@@ -342,6 +343,17 @@ export const INITIAL_REPORTS = [
 
 // Real release notes from src/yuzu/dekubi/whats-new.md (live GitHub API overrides when reachable)
 export const RELEASES_FALLBACK = [
+  {
+    tag_name: 'V3.0.3',
+    name: 'Dekubi Ally v3.0.3 — Safer Video and Frame Presenting',
+    published_at: '2026-11-25',
+    prerelease: true,
+    html_url: 'https://github.com/Dekubi/Dekubi-Ally/releases/tag/V3.0.3',
+    highlights: [
+      'In games that play videos (like the Ocarina of Time title screen), the video decoder could present a frame beside the GPU thread, a crash risk; frames are now always presented on the GPU thread',
+      'Found by analysing real logs after 3.0.2',
+    ],
+  },
   {
     tag_name: 'V3.0.2',
     name: 'Dekubi Ally v3.0.2 — Smoother OoT, Clearer Logs, a Website',

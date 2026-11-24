@@ -1,6 +1,7 @@
-# Dekubi Ally v3.0.2
+# Dekubi Ally v3.0.3
 
 ### 🆕 Recent updates
+- **3.0.3 — Safer video and frame presenting:** Frames are now always presented on the GPU thread to prevent corruption or crashes in games that play videos, such as Ocarina of Time's title screen. Found by the new log analysis.
 - **3.0.2 — Smoother Ocarina of Time, clearer logs, a website:** Ocarina of Time zeroes unused GPU memory on the GPU instead of copying zeros from the CPU, reducing work in busy scenes. Logs now show only real errors as errors. An anonymous summary (game, GPU, FPS) may appear on the new website dekubi.github.io, and only a yes to that publishes one.
 - **3.0.1 — Logs for every game, smoother Settings:** Log sharing now covers every game, not just Ocarina of Time. Dekubi asks once more and sends nothing without a yes; until you answer, an earlier yes covers Ocarina of Time only. The log names the game. In Settings, you can swipe to scroll on a touch screen, and with a controller Right / A goes straight to the first option.
 - **3 (3.0.0) — Back to the pop-up windows:** the PS5-style full-window screens from 2.0.7 were buggy, so they are gone. Settings opens as its own window with its tabs again, sized to your screen with big touch-friendly rows, minimise / maximise / close, and an optional full screen (F11) that is remembered. Help and Menu are pop-up menus again (also in the in-game bar), and Saves opens in its own window. Everything else from 2.0.7–2.0.9 stays: the shader recipe, the battery saver and less GPU memory on handhelds.
