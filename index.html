@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://dekubi-logs.dekubi-ally.workers.dev https://api.github.com; base-uri 'none'; form-action 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>dekubi — Dekubi Ally Compatibility, Telemetry &amp; Releases</title>
+  <meta name="description" content="dekubi — Compatibility tracker, log-verified benchmarks, and releases for Dekubi Ally, an open-source fork of Lichii and Fritchii tuned for ROG Ally Z1 Extreme, handhelds, and PCs." />
+  <link rel="icon" type="image/png" sizes="256x256" href="/dekubi-icon.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/dekubi-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <div id="site-notice" class="site-notice" role="region" aria-label="Release notice">
+    <div class="container site-notice-inner">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      <p class="notice-text">
+        <strong>Dekubi Ally v3.0.1 is out</strong> — touch-friendly pop-up windows, logs for every game (you're asked first), 120k OoT shader precompile recipe &amp; 30 FPS battery saver. <a href="#/changelog">Read what's new &rarr;</a>
+      </p>
+      <button id="dismiss-notice" class="notice-close" type="button" aria-label="Dismiss notice">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-shell">
+        <a href="#/" class="brand" aria-label="dekubi home">
+          <img class="brand-icon" src="/dekubi-icon.png" alt="Dekubi Ally" width="38" height="38" />
+          <span class="brand-copy">
+            <span class="brand-name">dekubi</span>
+            <span class="brand-sub">Dekubi Ally &middot; Lichii/Fritchii fork</span>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#/" data-nav="home">Overview</a>
+          <a href="#/reports" data-nav="reports">Benchmarks</a>
+          <a href="#/changelog" data-nav="changelog">What's new</a>
+          <a href="#/guide" data-nav="guide">Guide</a>
+          <a href="#/downloads" data-nav="downloads">Downloads</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="https://github.com/Dekubi/Dekubi-Ally" target="_blank" rel="noopener noreferrer" class="button ghost header-gh" aria-label="Dekubi Ally on GitHub">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="#/submit" class="button primary">Submit report</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="site-main" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p class="footer-note">
+        <strong>dekubi</strong> &mdash; Official companion site for <strong>Dekubi Ally</strong>, an independent fork of <strong>Lichii</strong> and <strong>Fritchii</strong> (core engine: Fritchii v6.5; building on Eglantine, Eden, yuzu &amp; Sudachi). Not affiliated with big red. Bring your own legally obtained files.
+      </p>
+      <div class="footer-links">
+        <a href="#/changelog">What's new</a>
+        <a href="#/downloads">Downloads</a>
+        <a href="#/privacy">Privacy &amp; credits</a>
+        <a href="https://github.com/Dekubi/Dekubi-Ally/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+        <a href="https://github.com/Dekubi/Dekubi-Ally/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
