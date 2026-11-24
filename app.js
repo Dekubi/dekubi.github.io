@@ -332,7 +332,7 @@ function renderHome(params) {
         <div>
           <div class="hero-badge">
             <span class="pulse-dot"></span>
-            <span>v3.0.1 OUT &middot; FORK OF LICHII &amp; FRITCHII</span>
+            <span>v3.0.2 OUT &middot; FORK OF LICHII &amp; FRITCHII</span>
           </div>
           <h1 class="hero-title">Handheld-first.<br /><span>Proven</span> in logs.</h1>
           <p class="hero-lead">
@@ -344,7 +344,7 @@ function renderHome(params) {
           </p>
           <div class="hero-cta-row">
             <a href="#/downloads" class="button primary">Downloads &amp; Releases</a>
-            <a href="#/changelog" class="button">What's new in v3.0.1</a>
+            <a href="#/changelog" class="button">What's new in v3.0.2</a>
             <a href="#/submit" class="button ghost">Submit a log report</a>
           </div>
         </div>

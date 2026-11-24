@@ -46,6 +46,7 @@ export const PLATFORMS = [
 ];
 
 export const BUILDS = [
+  'v3.0.2',
   'v3.0.1',
   'v3.0.0',
   'v2.0.9',
@@ -341,6 +342,18 @@ export const INITIAL_REPORTS = [
 
 // Real release notes from src/yuzu/dekubi/whats-new.md (live GitHub API overrides when reachable)
 export const RELEASES_FALLBACK = [
+  {
+    tag_name: 'V3.0.2',
+    name: 'Dekubi Ally v3.0.2 — Smoother OoT, Clearer Logs, a Website',
+    published_at: '2026-11-24',
+    prerelease: true,
+    html_url: 'https://github.com/Dekubi/Dekubi-Ally/releases/tag/V3.0.2',
+    highlights: [
+      'Ocarina of Time: unmapped GPU memory is zeroed on the GPU instead of being filled and copied by the CPU (less work in busy scenes)',
+      'Logs: Dekubi's own hang reports and self-checks are warnings, so errors in a log are real problems',
+      'The log-sharing question says an anonymous summary may appear on dekubi.github.io; only a yes to that publishes one',
+    ],
+  },
   {
     tag_name: 'V3.0.1',
     name: 'Dekubi Ally v3.0.1 — Logs for Every Game, Smoother Settings',
