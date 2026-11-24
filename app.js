@@ -65,7 +65,11 @@ function liveToReport(s) {
   if (!titleId || !title || !build || !gpu || Object.values(nums).some((v) => v === null) || !Number.isFinite(at)) {
     return null;
   }
-  const platform = ['windows', 'linux'].includes(s.platform) ? s.platform : 'windows';
+  const os = s.platform === 'linux' ? 'linux' : 'windows';
+  const handheldApu = /\bZ[12]\b|Z1 Extreme|Z2 (Go|Extreme)|PHOENIX/i.test(gpu);
+  const platform = /VANGOGH|Custom GPU 0405|Steam Deck/i.test(gpu) ? 'steam-deck'
+                 : handheldApu ? (os === 'linux' ? 'linux' : 'rog-ally')
+                 : os === 'linux' ? 'linux-pc' : 'windows';
   const driver = feedText(s.driver);
   const settings = s.settings && typeof s.settings === 'object' ? s.settings : {};
   const settingText = Object.entries(settings)
@@ -90,7 +94,7 @@ function liveToReport(s) {
     upscaler: '—',
     upscalerQuality: '—',
     frameGen: '—',
-    os: platform === 'linux' ? 'Linux' : 'Windows',
+    os: os === 'linux' ? 'Linux' : 'Windows',
     driver: driver || '—',
     author: 'Shared log (automatic)',
     verified: false,
@@ -334,7 +338,9 @@ function renderHome(params) {
           <p class="hero-lead">
             <strong>Dekubi Ally</strong> is an open-source fork of <strong>Lichii</strong> and <strong>Fritchii</strong>
             (v6.5 core), compiled with Clang 22 <code>x86-64-v3</code> and tuned for
-            <strong>ROG Ally Z1 Extreme</strong>, Steam Deck, Legion Go, MSI Claw, and 4&nbsp;GB VRAM+ PCs.
+            <strong>ROG Ally Z1 Extreme</strong>, Steam Deck, Legion Go and MSI Claw, and it runs just as well on
+            <strong>Windows and Linux desktops and laptops</strong> with NVIDIA, AMD or Intel graphics, down to
+            4&nbsp;GB VRAM / 8&nbsp;GB RAM.
           </p>
           <div class="hero-cta-row">
             <a href="#/downloads" class="button primary">Downloads &amp; Releases</a>
@@ -404,9 +410,9 @@ function renderHome(params) {
           <p>Precompiles ~120,000 Ocarina of Time shaders ahead of time (by Frizti) with background SCSKiller.</p>
         </div>
         <div class="bento-card">
-          <span class="eyebrow">HANDHELD READY</span>
-          <h3>4 GB Cap &amp; 30 FPS Saver</h3>
-          <p>Tighter GPU memory packing, automatic 30 FPS battery saver on unplug, and 45 s GPU watchdog.</p>
+          <span class="eyebrow">HANDHELDS &amp; PCS</span>
+          <h3>Tuned per device</h3>
+          <p>Handhelds get tighter GPU memory packing, a 30 FPS battery saver on unplug and a 45 s GPU watchdog; desktops and laptops keep full memory and frame rates, with DLSS, FSR and XeSS upscaling.</p>
         </div>
       </section>
 
@@ -630,7 +636,7 @@ function renderReports(params) {
       <div class="page-header">
         <span class="eyebrow">COMMUNITY FEED</span>
         <h1>Recent reports</h1>
-        <p>Every test submitted for Dekubi Ally across ROG Ally Z1 Extreme, Steam Deck, Legion Go, MSI Claw, Windows, and Linux.</p>
+        <p>Every test submitted for Dekubi Ally: handhelds (ROG Ally Z1 Extreme, Steam Deck, Legion Go, MSI Claw) and Windows and Linux desktops and laptops.</p>
         <div class="inline-stats">
           <div><div class="inline-stat-val">${allReports.length}</div><div class="inline-stat-lbl">Total reports</div></div>
           <div><div class="inline-stat-val">${allReports.length ? `${playablePct}%` : '—'}</div><div class="inline-stat-lbl">Playable or Perfect</div></div>
@@ -923,7 +929,7 @@ function renderSubmit(params) {
             <div class="step-num">03</div>
             <div class="step-body">
               <h3>Device &amp; hardware</h3>
-              <p class="step-hint">Tell other handheld and PC players what hardware you tested on.</p>
+              <p class="step-hint">Tell other players what you tested on: handheld, desktop or laptop.</p>
               <div class="field-grid">
                 <div class="field">
                   <label for="f-platform">Device / Platform</label>
@@ -1181,7 +1187,7 @@ function renderDownloads() {
       <div class="page-header">
         <span class="eyebrow">DEKUBI ALLY RELEASES</span>
         <h1>Download Dekubi Ally</h1>
-        <p>Experimental, open-source fork of <strong>Lichii</strong> and <strong>Fritchii</strong> (built on the Fritchii v6.5 core), tuned for handhelds (ROG Ally Z1 Extreme, Steam Deck, Legion Go, MSI Claw) and 4&nbsp;GB VRAM / 8&nbsp;GB RAM+ PCs. Compiled with Clang 22.1.8 &amp; <code>x86-64-v3</code>.</p>
+        <p>Experimental, open-source fork of <strong>Lichii</strong> and <strong>Fritchii</strong> (built on the Fritchii v6.5 core), tuned for handhelds (ROG Ally Z1 Extreme, Steam Deck, Legion Go, MSI Claw) and for Windows and Linux desktops and laptops with NVIDIA, AMD or Intel graphics, from 4&nbsp;GB VRAM / 8&nbsp;GB RAM up. Compiled with Clang 22.1.8 &amp; <code>x86-64-v3</code>.</p>
         <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
           <a href="https://github.com/Dekubi/Dekubi-Ally/releases" target="_blank" rel="noopener noreferrer" class="button primary">Download on GitHub Releases &rarr;</a>
           <a href="https://github.com/Dekubi/Dekubi-Ally" target="_blank" rel="noopener noreferrer" class="button">View source repository</a>
@@ -1205,9 +1211,9 @@ function renderDownloads() {
             <p>Full support for XeSS-FG, FSR 3.1, DLSS-G, LSFG (Lossless Scaling), and Apex Neural Rendering (ANR-FG) to hit smooth 60–120 FPS on handhelds.</p>
           </div>
           <div class="feature-card">
-            <span class="eyebrow">HANDHELD TUNING</span>
+            <span class="eyebrow">DEVICE TUNING</span>
             <h3>Target Device Tier Auto-Tuning</h3>
-            <p>Automatic hardware profiling for ROG Ally Z1E, Steam Deck, Legion Go, MSI Claw &amp; 4 GB VRAM GPUs, plus Linux DMI &amp; zero-page memory trimming.</p>
+            <p>Automatic hardware profiling picks a tier for each device: ROG Ally Z1E, Steam Deck, Legion Go and MSI Claw, low-spec PCs (4 GB VRAM / 8 GB RAM), and mid- and high-end desktops and laptops; plus Linux DMI detection &amp; zero-page memory trimming.</p>
           </div>
           <div class="feature-card">
             <span class="eyebrow">COMPILER</span>

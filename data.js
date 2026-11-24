@@ -36,10 +36,11 @@ export const STATUS_META = {
 };
 
 export const PLATFORMS = [
-  { id: 'rog-ally', label: 'ROG Ally Z1E (Win)', short: 'ROG Ally' },
-  { id: 'linux', label: 'ROG Ally / Linux', short: 'Linux' },
-  { id: 'windows', label: 'Windows PC', short: 'Windows' },
+  { id: 'windows', label: 'Windows desktop / laptop', short: 'Windows PC' },
+  { id: 'rog-ally', label: 'ROG Ally / Z1 handheld (Windows)', short: 'ROG Ally' },
+  { id: 'linux', label: 'Handheld on Linux (Bazzite, SteamOS)', short: 'Linux handheld' },
   { id: 'steam-deck', label: 'Steam Deck', short: 'Steam Deck' },
+  { id: 'linux-pc', label: 'Linux desktop / laptop', short: 'Linux PC' },
   { id: 'legion-go', label: 'Legion Go', short: 'Legion Go' },
   { id: 'msi-claw', label: 'MSI Claw', short: 'MSI Claw' },
 ];
@@ -113,7 +114,7 @@ export const INITIAL_GAMES = [
     genre: 'Action Adventure',
     palette: ['#0f5e44', '#081d17'],
     tag: 'LOG VERIFIED',
-    recommended: 'Vulkan · 540p→720p/1080p FSR on ROG Ally Z1E · 1440p on desktop RTX · v2.0.9 adds the 120k shader precompile recipe',
+    recommended: 'Vulkan · 540p→720p/1080p FSR on ROG Ally Z1E · 1440p on desktop and laptop GPUs (NVIDIA, AMD, Intel) · v2.0.9 adds the 120k shader precompile recipe',
   },
   {
     slug: 'donkey-kong-bananza',
